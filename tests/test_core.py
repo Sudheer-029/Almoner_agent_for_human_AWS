@@ -197,3 +197,23 @@ def test_restricted_fund_balance(data):
     bal = fund_balance(gifts, expenses, "literacy_program", "BLF-2026")
     assert bal["spend"] == Decimal("4882.45")
     assert bal["closing"] == money(bal["income"] - bal["spend"])
+
+
+def test_a_second_close_does_not_inherit_the_first_close_s_answers(tmp_path):
+    """Closing the month again must start from a clean queue."""
+    from almoner import ledger
+
+    db = str(tmp_path / "t.db")
+    conn = ledger.connect(db)
+    item = {"ref": "EX-486", "kind": "expense", "disposition": "needs_your_decision",
+            "headline": "h", "reason": "r"}
+
+    ledger.start_run(conn, "run-a", "August 2026")
+    ledger.add_queue_item(conn, "run-a", item)
+    ledger.record_decision(conn, "run-a", "EX-486", "Meena", "Move to unrestricted funds")
+
+    ledger.start_run(conn, "run-b", "August 2026")
+    ledger.add_queue_item(conn, "run-b", item)
+
+    assert ledger.queue_for_run(conn, "run-a")[0]["decision"] is not None
+    assert ledger.queue_for_run(conn, "run-b")[0]["decision"] is None

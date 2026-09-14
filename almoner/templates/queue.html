@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Almoner — review queue{% endblock %}
+{% block body %}
+
+<div class="counter">
+  <div class="count done">
+    <span class="n">{{ counts.handled }}</span>
+    <span class="l">handled without you</span>
+  </div>
+  <div class="count you">
+    <span class="n" id="counter-outstanding">{{ counts.outstanding }}</span>
+    <span class="l">need your decision</span>
+  </div>
+  <div class="count">
+    <span class="n">{{ letters }}</span>
+    <span class="l">letters drafted</span>
+  </div>
+  <div class="count">
+    <span class="n">0</span>
+    <span class="l">sent to anyone</span>
+  </div>
+</div>
+<p class="runline">{{ run_id }} &middot; closed {{ started }} &middot; {{ counts.total }} items reviewed</p>
+
+<h2>Needs your decision</h2>
+<p class="lede">{{ counts.escalated }} of {{ counts.total }} items could not be settled from the
+  records alone. Each one is a question only you can answer.</p>
+{% for i in needs %}{% include "_item.html" %}{% endfor %}
+
+<h2>Handled without you</h2>
+<p class="lede">Reconciled, classified and drafted. Every figure came from a tool,
+  not from the model. Open any row to see what produced it.</p>
+<div class="compact">
+  {% for i in handled %}
+  <div class="row">
+    <span class="tag {% if i.disposition == 'drafted_for_approval' %}draft{% endif %}">
+      {{ 'drafted' if i.disposition == 'drafted_for_approval' else 'cleared' }}
+    </span>
+    <span>{{ i.headline }}</span>
+    <span class="ref"><a href="/item/{{ i.ref }}">{{ i.ref }}</a></span>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

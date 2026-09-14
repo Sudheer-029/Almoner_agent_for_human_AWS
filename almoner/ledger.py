@@ -161,9 +161,12 @@ def queue_for_run(conn: sqlite3.Connection, run_id: str) -> list[dict]:
     for r in rows:
         item = dict(r)
         item["options"] = json.loads(item["options"] or "[]")
+        # Scoped to this run: closing the month again must start from a clean
+        # queue, not inherit answers given to a previous close.
         latest = conn.execute(
-            "SELECT choice, decided_by, decided_at FROM decisions WHERE ref=? ORDER BY id DESC LIMIT 1",
-            (r["ref"],),
+            "SELECT choice, decided_by, decided_at FROM decisions "
+            "WHERE run_id=? AND ref=? ORDER BY id DESC LIMIT 1",
+            (run_id, r["ref"]),
         ).fetchone()
         item["decision"] = dict(latest) if latest else None
         out.append(item)

@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 620" width="980" height="620" font-family="'Public Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif">
+  <rect x="0" y="0" width="980" height="620" fill="#F6F7F4"/>
+
+  <text x="40" y="44" font-size="21" font-weight="700" fill="#131815">Almoner — month close</text>
+  <text x="40" y="66" font-size="13" fill="#5D6A62">A Strands graph of three specialists. Every figure comes from a deterministic tool; the model never calculates.</text>
+
+  <!-- ============ INPUTS ============ -->
+  <text x="40" y="108" font-size="10.5" letter-spacing="1.6" fill="#5D6A62" font-family="monospace">INPUTS</text>
+  <g>
+    <rect x="40" y="120" width="172" height="40" fill="#FFFFFF" stroke="#D8DED7"/>
+    <text x="52" y="138" font-size="12.5" font-weight="700" fill="#131815">bank_statement.csv</text>
+    <text x="52" y="153" font-size="11" fill="#5D6A62">lumped payouts, bare descriptors</text>
+
+    <rect x="40" y="164" width="172" height="40" fill="#FFFFFF" stroke="#D8DED7"/>
+    <text x="52" y="182" font-size="12.5" font-weight="700" fill="#131815">donations.csv</text>
+    <text x="52" y="197" font-size="11" fill="#5D6A62">gifts, pledges, in-kind</text>
+
+    <rect x="40" y="208" width="172" height="40" fill="#FFFFFF" stroke="#D8DED7"/>
+    <text x="52" y="226" font-size="12.5" font-weight="700" fill="#131815">expenses.csv</text>
+    <text x="52" y="241" font-size="11" fill="#5D6A62">charged to fund or grant</text>
+
+    <rect x="40" y="252" width="172" height="40" fill="#FFFFFF" stroke="#D8DED7"/>
+    <text x="52" y="270" font-size="12.5" font-weight="700" fill="#131815">grant_agreement.pdf</text>
+    <text x="52" y="285" font-size="11" fill="#5D6A62">clauses, caps, deadlines</text>
+  </g>
+
+  <!-- arrow inputs -> graph -->
+  <path d="M212 206 L252 206" stroke="#5D6A62" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5D6A62"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1C6B48"/>
+    </marker>
+    <marker id="arrowa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#A2600B"/>
+    </marker>
+  </defs>
+
+  <!-- ============ GRAPH ============ -->
+  <rect x="252" y="96" width="424" height="212" fill="#FFFFFF" stroke="#1C6B48" stroke-width="1.5"/>
+  <text x="266" y="116" font-size="10.5" letter-spacing="1.6" fill="#1C6B48" font-family="monospace">STRANDS GRAPH — GraphBuilder</text>
+
+  <g>
+    <rect x="266" y="128" width="396" height="50" fill="#DCE9E1" stroke="#1C6B48"/>
+    <text x="278" y="147" font-size="13" font-weight="700" fill="#131815">1 · reconciler</text>
+    <text x="278" y="163" font-size="11" fill="#2F4A3C">ties every bank credit to gifts · escalates what cannot be confirmed</text>
+    <text x="646" y="147" font-size="10" fill="#5D6A62" text-anchor="end" font-family="monospace">haiku</text>
+
+    <path d="M464 178 L464 192" stroke="#1C6B48" stroke-width="1.5" marker-end="url(#arrowg)"/>
+
+    <rect x="266" y="194" width="396" height="50" fill="#DCE9E1" stroke="#1C6B48"/>
+    <text x="278" y="213" font-size="13" font-weight="700" fill="#131815">2 · acknowledger</text>
+    <text x="278" y="229" font-size="11" fill="#2F4A3C">writes letter language once · flags quid-pro-quo and in-kind</text>
+    <text x="646" y="213" font-size="10" fill="#5D6A62" text-anchor="end" font-family="monospace">sonnet</text>
+
+    <path d="M464 244 L464 258" stroke="#1C6B48" stroke-width="1.5" marker-end="url(#arrowg)"/>
+
+    <rect x="266" y="260" width="396" height="36" fill="#DCE9E1" stroke="#1C6B48"/>
+    <text x="278" y="277" font-size="13" font-weight="700" fill="#131815">3 · compliance</text>
+    <text x="278" y="290" font-size="11" fill="#2F4A3C">reads the grant clauses · tests each expense · drafts funder report</text>
+    <text x="646" y="277" font-size="10" fill="#5D6A62" text-anchor="end" font-family="monospace">sonnet</text>
+  </g>
+
+  <!-- graph -> queue -->
+  <path d="M676 202 L724 202" stroke="#5D6A62" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ============ REVIEW QUEUE ============ -->
+  <rect x="724" y="96" width="216" height="212" fill="#FFFFFF" stroke="#A2600B" stroke-width="1.5"/>
+  <text x="738" y="116" font-size="10.5" letter-spacing="1.6" fill="#A2600B" font-family="monospace">REVIEW QUEUE</text>
+
+  <rect x="738" y="128" width="188" height="52" fill="#DCE9E1" stroke="#D8DED7"/>
+  <text x="750" y="156" font-size="25" font-family="monospace" fill="#1C6B48">43</text>
+  <text x="790" y="150" font-size="11.5" fill="#131815">handled</text>
+  <text x="790" y="164" font-size="11.5" fill="#131815">without you</text>
+
+  <rect x="738" y="184" width="188" height="52" fill="#F6EAD4" stroke="#D8DED7"/>
+  <text x="750" y="212" font-size="25" font-family="monospace" fill="#A2600B">3</text>
+  <text x="782" y="206" font-size="11.5" fill="#131815">need your</text>
+  <text x="782" y="220" font-size="11.5" fill="#131815">decision</text>
+
+  <rect x="738" y="240" width="188" height="52" fill="#FFFFFF" stroke="#D8DED7"/>
+  <text x="750" y="268" font-size="25" font-family="monospace" fill="#131815">0</text>
+  <text x="782" y="262" font-size="11.5" fill="#131815">sent to</text>
+  <text x="782" y="276" font-size="11.5" fill="#131815">anyone</text>
+
+  <!-- queue -> human -->
+  <path d="M832 308 L832 344" stroke="#A2600B" stroke-width="1.5" marker-end="url(#arrowa)"/>
+  <rect x="724" y="348" width="216" height="56" fill="#F6EAD4" stroke="#A2600B"/>
+  <text x="738" y="370" font-size="13" font-weight="700" fill="#131815">The treasurer decides</text>
+  <text x="738" y="388" font-size="11" fill="#5D6A62">approve · choose · answer</text>
+
+  <!-- human -> ledger (feedback) -->
+  <path d="M832 404 L832 472 L300 472 L300 502" stroke="#A2600B" stroke-width="1.5"
+        stroke-dasharray="4 3" fill="none" marker-end="url(#arrowa)"/>
+  <text x="820" y="466" font-size="10" fill="#A2600B" font-family="monospace"
+        text-anchor="end">appended to the ledger, never overwritten</text>
+
+  <!-- ============ TOOLS ============ -->
+  <text x="40" y="342" font-size="10.5" letter-spacing="1.6" fill="#5D6A62" font-family="monospace">DETERMINISTIC TOOLS</text>
+  <rect x="40" y="352" width="500" height="104" fill="#EDF0EB" stroke="#D8DED7"/>
+
+  <g font-family="monospace" font-size="11.5" fill="#131815">
+    <rect x="54" y="366" width="150" height="26" fill="#FFFFFF" stroke="#D8DED7"/>
+    <text x="64" y="383">match_deposits</text>
+    <rect x="214" y="366" width="150" height="26" fill="#FFFFFF" stroke="#D8DED7"/>
+    <text x="224" y="383">net_of_fees</text>
+    <rect x="374" y="366" width="152" height="26" fill="#FFFFFF" stroke="#D8DED7"/>
+    <text x="384" y="383">deductible_portion</text>
+
+    <rect x="54" y="398" width="150" height="26" fill="#FFFFFF" stroke="#D8DED7"/>
+    <text x="64" y="415">fund_balance</text>
+    <rect x="214" y="398" width="312" height="26" fill="#FFFFFF" stroke="#D8DED7"/>
+    <text x="224" y="415">test_expense_against_grant</text>
+  </g>
+  <text x="54" y="443" font-size="11" fill="#5D6A62" font-family="'Public Sans',sans-serif">Each returns a Decimal the model may report but may not compute.</text>
+
+  <!-- tools <-> graph -->
+  <path d="M290 352 L290 308" stroke="#5D6A62" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M320 308 L320 352" stroke="#5D6A62" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="336" y="332" font-size="10" fill="#5D6A62" font-family="monospace">tool calls</text>
+
+  <!-- ============ LEDGER ============ -->
+  <text x="40" y="492" font-size="10.5" letter-spacing="1.6" fill="#5D6A62" font-family="monospace">APPEND-ONLY LEDGER — SQLITE</text>
+  <rect x="40" y="502" width="500" height="62" fill="#FFFFFF" stroke="#D8DED7"/>
+  <g font-size="11.5" fill="#131815" font-family="monospace">
+    <text x="56" y="524">queue</text>
+    <text x="146" y="524">decisions</text>
+    <text x="256" y="524">letters</text>
+    <text x="346" y="524">traces</text>
+    <text x="436" y="524">runs</text>
+  </g>
+  <text x="56" y="548" font-size="11" fill="#5D6A62" font-family="'Public Sans',sans-serif">Every approval is a new row, so the books can always say who decided what, and when.</text>
+
+  <!-- structured output note -->
+  <rect x="560" y="424" width="380" height="64" fill="#FFFFFF" stroke="#D8DED7"/>
+  <text x="574" y="444" font-size="11.5" font-weight="700" fill="#131815">Every node returns a Pydantic model</text>
+  <text x="574" y="461" font-size="11" fill="#5D6A62">ReconcileReport · AcknowledgementReport · ComplianceReport</text>
+  <text x="574" y="477" font-size="11" fill="#5D6A62">An escalation carries a question, options and consequences.</text>
+
+  <!-- provider note -->
+  <rect x="560" y="500" width="380" height="64" fill="#EDF0EB" stroke="#D8DED7"/>
+  <text x="574" y="520" font-size="11.5" font-weight="700" fill="#131815">Model provider is one environment variable</text>
+  <text x="574" y="537" font-size="11" fill="#5D6A62">Amazon Bedrock (inference profiles) or the Anthropic API.</text>
+  <text x="574" y="553" font-size="11" fill="#5D6A62">The graph, tools and schemas are unchanged either way.</text>
+
+  <text x="40" y="596" font-size="11" fill="#5D6A62">Almoner drafts for human approval and never sends. It is not tax or legal advice.</text>
+</svg>

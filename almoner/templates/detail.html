@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Almoner — {{ i.ref }}{% endblock %}
+{% block body %}
+<h2>{{ i.headline }}</h2>
+<p class="lede">{{ i.reason }}</p>
+
+<dl class="src">
+  <dt>reference</dt><dd>{{ i.ref }}</dd>
+  <dt>produced by node</dt><dd>{{ i.node }}</dd>
+  <dt>disposition</dt><dd>{{ i.disposition }}</dd>
+  {% if i.citation %}<dt>citation</dt><dd>{{ i.citation }}</dd>{% endif %}
+  {% if i.decision %}
+  <dt>decided</dt><dd>{{ i.decision.choice }} — {{ i.decision.decided_by }}</dd>
+  {% endif %}
+</dl>
+
+<h2>Source record</h2>
+<p class="lede">The row exactly as it appears in the month's records, before anything read it.</p>
+<dl class="src">
+  {% for k, v in (source or {}).items() %}
+    <dt>{{ k }}</dt><dd>{{ v if v != '' else '—' }}</dd>
+  {% endfor %}
+</dl>
+
+{% if traces %}
+<h2>Run trace</h2>
+<div class="compact">
+  {% for t in traces %}
+  <div class="row"><span class="tag">{{ t.node }}</span><span>{{ t.detail or t.event }}</span><span class="ref">{{ t.at }}</span></div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<p style="margin-top:26px"><a href="/">&larr; Back to the queue</a></p>
+{% endblock %}

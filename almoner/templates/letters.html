@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Almoner — drafted letters{% endblock %}
+{% block body %}
+<h2>Drafted acknowledgements</h2>
+<p class="lede">{{ letters|length }} letters, none sent. The model wrote the language once;
+  every name, amount and date below was filled in by a tool.</p>
+{% for l in letters %}
+  <p class="ref">{{ l.gift_id }} &middot; {{ l.donor }}</p>
+  <pre class="letter">{{ l.body }}</pre>
+{% endfor %}
+{% endblock %}

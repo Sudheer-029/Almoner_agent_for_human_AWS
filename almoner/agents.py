@@ -19,9 +19,28 @@ from .schemas import AcknowledgementReport, ComplianceReport, ReconcileReport
 
 REGION = os.environ.get("AWS_REGION", "us-west-2")
 
+# Which model provider to run against. Strands is model-portable, so this is the
+# only place the choice appears: "bedrock" (default) or "anthropic".
+PROVIDER = os.environ.get("ALMONER_PROVIDER", "bedrock").lower()
+
+# Bedrock defaults are cross-region INFERENCE PROFILE ids, not bare model names.
+# Many accounts expose no on-demand foundation models at all, and a bare id like
+# "anthropic.claude-sonnet-5" is then rejected as an invalid model identifier.
+# The "global." profiles route across all regions for availability.
+BEDROCK_JUDGMENT = "global.anthropic.claude-sonnet-5"
+BEDROCK_ROUTINE = "global.anthropic.claude-haiku-4-5-20251001-v1:0"
+
+ANTHROPIC_JUDGMENT = "claude-sonnet-5"
+ANTHROPIC_ROUTINE = "claude-haiku-4-5"
+
+_defaults = (
+    (BEDROCK_JUDGMENT, BEDROCK_ROUTINE) if PROVIDER == "bedrock"
+    else (ANTHROPIC_JUDGMENT, ANTHROPIC_ROUTINE)
+)
+
 # Judgment nodes get the stronger model; the mechanical node does not need it.
-JUDGMENT_MODEL = os.environ.get("ALMONER_JUDGMENT_MODEL", "anthropic.claude-sonnet-5")
-ROUTINE_MODEL = os.environ.get("ALMONER_ROUTINE_MODEL", "anthropic.claude-haiku-4-5")
+JUDGMENT_MODEL = os.environ.get("ALMONER_JUDGMENT_MODEL", _defaults[0])
+ROUTINE_MODEL = os.environ.get("ALMONER_ROUTINE_MODEL", _defaults[1])
 
 ORG = "Kalyani Literacy Trust"
 
@@ -54,7 +73,22 @@ no jargon, naming the specific record and the specific problem.
 """.strip()
 
 
-def _model(model_id: str, temperature: float = 0.2) -> BedrockModel:
+def _model(model_id: str, temperature: float = 0.2):
+    """One model, from whichever provider is configured.
+
+    The nodes below never know which it is. That is the point of building on
+    Strands: the same graph, tools and structured outputs run unchanged against
+    Bedrock or the Anthropic API, so a provider outage or an account still under
+    verification costs a single environment variable, not a rewrite.
+    """
+    if PROVIDER == "anthropic":
+        from strands.models.anthropic import AnthropicModel  # needs strands-agents[anthropic]
+
+        return AnthropicModel(
+            model_id=model_id,
+            params={"temperature": temperature, "max_tokens": 8000},
+        )
+
     return BedrockModel(
         region_name=REGION,
         model_id=model_id,

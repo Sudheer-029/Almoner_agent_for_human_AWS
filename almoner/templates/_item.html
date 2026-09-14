@@ -1,0 +1,31 @@
+{% if swap_counter %}
+<span id="counter-outstanding" hx-swap-oob="true">{{ counts.outstanding }}</span>
+{% endif %}
+<div class="item {% if i.decision %}answered{% else %}you{% endif %}" id="item-{{ i.ref }}">
+  <div class="item-head">
+    <p class="headline">{{ i.headline }}</p>
+    <span class="ref"><a href="/item/{{ i.ref }}">{{ i.ref }}</a></span>
+  </div>
+  <p class="reason">{{ i.reason }}</p>
+  {% if i.citation %}<span class="cite">{{ i.citation }}</span>{% endif %}
+
+  {% if i.decision %}
+    <div class="answered-note">
+      <b>{{ i.decision.choice }}</b>
+      <span>Decided by {{ i.decision.decided_by }} &middot; {{ i.decision.decided_at }}</span>
+    </div>
+  {% else %}
+    <div class="options">
+      {% for o in i.options %}
+        <form class="opt" method="post" action="/decide/{{ i.ref }}"
+              hx-post="/decide/{{ i.ref }}"
+              hx-target="#item-{{ i.ref }}" hx-swap="outerHTML">
+          <b>{{ o.label }}</b>
+          <span>{{ o.consequence }}</span>
+          <input type="hidden" name="choice" value="{{ o.label }}">
+          <button type="submit">Choose this</button>
+        </form>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
