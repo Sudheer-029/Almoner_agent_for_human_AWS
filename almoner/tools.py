@@ -131,6 +131,11 @@ def test_expense_against_grant(
 ) -> str:
     """Test one expense against the grant rule you extracted from the agreement.
 
+    `allowable_categories` must use the labels that appear in the expense records:
+    program_delivery, program_materials, training, equipment, facilities,
+    outreach, admin. Passing the agreement's prose instead will mark every
+    expense non-compliant.
+
     You supply the rule because reading the agreement is your job. Comparing an
     amount to a threshold is not - this tool does that, exactly, every time.
     """

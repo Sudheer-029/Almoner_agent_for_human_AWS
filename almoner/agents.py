@@ -33,10 +33,18 @@ BEDROCK_ROUTINE = "global.anthropic.claude-haiku-4-5-20251001-v1:0"
 ANTHROPIC_JUDGMENT = "claude-sonnet-5"
 ANTHROPIC_ROUTINE = "claude-haiku-4-5"
 
-_defaults = (
-    (BEDROCK_JUDGMENT, BEDROCK_ROUTINE) if PROVIDER == "bedrock"
-    else (ANTHROPIC_JUDGMENT, ANTHROPIC_ROUTINE)
-)
+# Bedrock Mantle: the OpenAI-compatible endpoint behind the redesigned Bedrock
+# console. Some accounts are authorised here while classic bedrock-runtime still
+# reports NOT_AUTHORIZED - same credentials, same region, different service.
+MANTLE_JUDGMENT = "deepseek.v3.2"
+MANTLE_ROUTINE = "deepseek.v3.2"
+
+_DEFAULTS = {
+    "bedrock": (BEDROCK_JUDGMENT, BEDROCK_ROUTINE),
+    "anthropic": (ANTHROPIC_JUDGMENT, ANTHROPIC_ROUTINE),
+    "mantle": (MANTLE_JUDGMENT, MANTLE_ROUTINE),
+}
+_defaults = _DEFAULTS.get(PROVIDER, _DEFAULTS["bedrock"])
 
 # Judgment nodes get the stronger model; the mechanical node does not need it.
 JUDGMENT_MODEL = os.environ.get("ALMONER_JUDGMENT_MODEL", _defaults[0])
@@ -85,6 +93,17 @@ def _model(model_id: str, temperature: float = 0.2):
         from strands.models.anthropic import AnthropicModel  # needs strands-agents[anthropic]
 
         return AnthropicModel(
+            model_id=model_id,
+            params={"temperature": temperature, "max_tokens": 8000},
+        )
+
+    if PROVIDER == "mantle":
+        # needs strands-agents[openai]; the bearer token is minted from the same
+        # AWS credentials, so there is no separate API key to manage.
+        from strands.models.openai import OpenAIModel
+
+        return OpenAIModel(
+            bedrock_mantle_config={"region": REGION},
             model_id=model_id,
             params={"temperature": temperature, "max_tokens": 8000},
         )
@@ -172,6 +191,13 @@ Work in this order:
    capital equipment cap, the clause number that imposes it, the clause that
    says what happens when it is breached, the allowable cost categories, and
    the date the interim report is due.
+
+   allowable_categories must be the category LABELS used in the expense records,
+   not the agreement's prose. The labels in use are: program_delivery,
+   program_materials, training, equipment, facilities, outreach, admin. Read the
+   agreement's wording and map it onto those labels yourself - for example
+   "instructional materials, including books" is program_materials, and
+   "stipends and contractor fees for tutors" is program_delivery.
 
 2. list_expenses, then call test_expense_against_grant for EVERY expense,
    passing the rule you extracted. Do not compare amounts yourself - that tool
