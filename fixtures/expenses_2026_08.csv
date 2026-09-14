@@ -1,0 +1,11 @@
+expense_id,expense_date,vendor,description,amount,fund,category,receipt_ref
+EX-481,2026-08-03,Fremont Unified Facilities,Classroom rental — August,900.00,general,facilities,RCPT-481
+EX-482,2026-08-05,Scholastic Book Fairs,"Leveled readers, grades 2-4",1340.00,BLF-2026,program_materials,RCPT-482
+EX-483,2026-08-07,R. Estrada (contractor),Tutor stipend — 24 sessions,960.00,BLF-2026,program_delivery,RCPT-483
+EX-484,2026-08-11,Bay Area Print Co.,Family literacy night flyers,185.00,general,outreach,RCPT-484
+EX-485,2026-08-13,Costco Wholesale,Snacks for after-school program,212.45,BLF-2026,program_delivery,RCPT-485
+EX-486,2026-08-17,TechDirect Business,Dell Latitude 5540 laptop (1 unit),1200.00,BLF-2026,equipment,RCPT-486
+EX-487,2026-08-19,L. Okonkwo (contractor),Tutor stipend — 18 sessions,720.00,BLF-2026,program_delivery,RCPT-487
+EX-488,2026-08-21,Literacy Coaches Institute,"Tutor training workshop, 4 seats",450.00,BLF-2026,training,RCPT-488
+EX-489,2026-08-24,Pacific Gas & Electric,Utilities — August,148.30,general,facilities,RCPT-489
+EX-490,2026-08-27,Staples,"Binders, paper, printer toner",167.80,general,admin,RCPT-490

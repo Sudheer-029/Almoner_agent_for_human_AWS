@@ -1,0 +1,32 @@
+gift_id,gift_date,donor_name,donor_email,gross_amount,processing_fee,net_amount,channel,gift_type,designation,goods_received_fmv,status,notes
+GP-2601,2026-08-02,Anita Deshpande,anita.deshpande@example.com,50.00,1.40,48.60,online,donation,unrestricted,,settled,
+GP-2602,2026-08-02,Thomas Okafor,t.okafor@example.com,250.00,5.80,244.20,online,donation,literacy_program,,settled,
+GP-2704,2026-08-02,Robert Hoffmann,rhoffmann@example.com,500.00,0.00,500.00,check,pledge,unrestricted,,pledged,Pledge card signed at July board meeting; payment not yet received
+GP-2603,2026-08-03,Grace Lin,grace.lin@example.com,35.00,1.07,33.93,online,donation,unrestricted,,settled,
+GP-2604,2026-08-04,Daniel Mercado,dmercado@example.com,100.00,2.50,97.50,online,donation,unrestricted,,settled,
+GP-2605,2026-08-05,Sarah Whitfield,swhitfield@example.com,500.00,11.30,488.70,online,donation,literacy_program,,settled,
+GP-2606,2026-08-05,Kevin Barnes,kbarnes@example.com,25.00,0.85,24.15,online,donation,unrestricted,,settled,
+GP-2607,2026-08-06,Lakshmi Iyer,l.iyer@example.com,150.00,3.60,146.40,online,donation,literacy_program,,settled,
+GP-2608,2026-08-07,Marcus Webb,marcus.webb@example.com,75.00,1.95,73.05,online,donation,unrestricted,,settled,
+GP-2609,2026-08-09,Joanne Pruitt,jpruitt@example.com,200.00,4.70,195.30,online,donation,unrestricted,,settled,
+GP-2610,2026-08-10,Hassan Qureshi,h.qureshi@example.com,60.00,1.62,58.38,online,donation,literacy_program,,settled,
+GP-2611,2026-08-10,Emily Sandoval,esandoval@example.com,40.00,1.18,38.82,online,donation,unrestricted,,settled,
+GP-2701,2026-08-11,Priya Venkatesan,p.venkatesan@example.com,1500.00,0.00,1500.00,check,donation,literacy_program,,settled,"Check #2211 received by post, deposited 11 Aug"
+GP-2612,2026-08-12,Nathan Cole,ncole@example.com,300.00,6.90,293.10,online,donation,literacy_program,,settled,
+GP-2613,2026-08-13,Rebecca Ahn,rahn@example.com,85.00,2.17,82.83,online,donation,unrestricted,,settled,
+GP-2614,2026-08-14,Victor Almeida,valmeida@example.com,125.00,3.05,121.95,online,donation,unrestricted,,settled,
+GP-2702,2026-08-15,Westbrook Systems LLC,giving@westbrooksystems.example.com,0.00,0.00,0.00,in_kind,in_kind,literacy_program,,settled,Six refurbished Dell Latitude 5420 laptops for the after-school lab
+GP-2615,2026-08-16,Priscilla Nwosu,pnwosu@example.com,45.00,1.29,43.71,online,donation,literacy_program,,settled,
+GP-2616,2026-08-17,Gregory Tan,gtan@example.com,175.00,4.15,170.85,online,donation,unrestricted,,settled,
+GP-2617,2026-08-18,Farida Mansour,fmansour@example.com,90.00,2.28,87.72,online,donation,literacy_program,,settled,
+GP-2618,2026-08-19,Owen Bradshaw,obradshaw@example.com,30.00,0.96,29.04,online,donation,unrestricted,,settled,
+GP-2619,2026-08-20,Christine Duval,cduval@example.com,400.00,9.10,390.90,online,donation,literacy_program,,settled,
+GP-2620,2026-08-21,Samuel Oyelaran,soyelaran@example.com,55.00,1.51,53.49,online,donation,unrestricted,,settled,
+GP-2703,2026-08-22,Douglas Whitmore,dwhitmore@example.com,250.00,5.80,244.20,online,event_ticket,unrestricted,,settled,"Summer Readers Gala — one seat, dinner and program included"
+GP-2621,2026-08-23,Meredith Koh,mkoh@example.com,110.00,2.72,107.28,online,donation,unrestricted,,settled,
+GP-2622,2026-08-24,Alan Frisch,afrisch@example.com,65.00,1.73,63.27,online,donation,literacy_program,,settled,
+GP-2623,2026-08-25,Deepa Raman,draman@example.com,220.00,5.14,214.86,online,donation,literacy_program,,settled,
+GP-2624,2026-08-26,Julian Ferreira,jferreira@example.com,80.00,2.06,77.94,online,donation,unrestricted,,settled,
+GP-2625,2026-08-27,Naomi Hartley,nhartley@example.com,95.00,2.39,92.61,online,donation,unrestricted,,settled,
+GP-2626,2026-08-28,Bassam Haddad,bhaddad@example.com,140.00,3.38,136.62,online,donation,literacy_program,,settled,
+GP-2627,2026-08-28,Claire Beaumont,cbeaumont@example.com,70.00,1.84,68.16,online,donation,unrestricted,,settled,
